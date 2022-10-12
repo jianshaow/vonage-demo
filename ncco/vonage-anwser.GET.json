@@ -1,0 +1,22 @@
+[
+  {
+    "action": "talk",
+    "text": "Please, tell me something"
+  },
+  {
+    "action": "input",
+    "type": [
+      "speech"
+    ],
+    "eventUrl": [
+      "{{request.host_url}}mock-api/vonage-asr"
+    ],
+    "speech": {
+      "endOnSilence": 1,
+      "language": "en-US",
+      "uuid": [
+        "{{request.args.get('uuid')}}"
+      ]
+    }
+  }
+]

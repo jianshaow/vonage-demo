@@ -1,0 +1,6 @@
+[
+  {
+    "action": "talk",
+    "text": "Hello ,you said {{request.get_json()['speech']['results'][0]['text']}}"
+  }
+]
