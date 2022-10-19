@@ -3,6 +3,6 @@
     "action": "talk",
     "language": "cmn-CN",
     "style": 1,
-    "text": "您好，您刚才说的是 {{request.get_json()['speech']['results'][0]['text']}}"
+    "text": "您好，您刚才说的是：{{request.get_json()['speech']['results'][0]['text']}}"
   }
 ]
