@@ -3,7 +3,7 @@
     "action": "talk",
     "language": "cmn-CN",
     "style": 1,
-    "text": "欢迎致电，请告诉我们您的想法"
+    "text": "您好，欢迎致电语音认证系统，请读出屏幕上显示的认证码"
   },
   {
     "action": "input",
