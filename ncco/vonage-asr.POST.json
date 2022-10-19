@@ -1,6 +1,8 @@
 [
   {
     "action": "talk",
-    "text": "Hello ,you said {{request.get_json()['speech']['results'][0]['text']}}"
+    "language": "cmn-CN",
+    "style": 1,
+    "text": "您好，您刚才说的是 {{request.get_json()['speech']['results'][0]['text']}}"
   }
 ]

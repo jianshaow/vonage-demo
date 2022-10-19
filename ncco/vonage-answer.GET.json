@@ -1,7 +1,9 @@
 [
   {
     "action": "talk",
-    "text": "Please, tell me something"
+    "language": "cmn-CN",
+    "style": 1,
+    "text": "欢迎致电，请告诉我们您的想法"
   },
   {
     "action": "input",
@@ -13,7 +15,7 @@
     ],
     "speech": {
       "endOnSilence": 1,
-      "language": "en-US",
+      "language": "zh",
       "uuid": [
         "{{request.args.get('uuid')}}"
       ]
