@@ -1,9 +1,7 @@
 [
   {
     "action": "talk",
-    "language": "cmn-CN",
-    "style": 1,
-    "text": "您好，您读的认证码是：{{request.get_json()['speech']['results'][0]['text']}}，请再读一遍"
+    "text": "Hello, you read {{request.get_json()['speech']['results'][0]['text']}}, read again please"
   },
   {
     "action": "input",
@@ -15,7 +13,7 @@
     ],
     "speech": {
       "endOnSilence": 1,
-      "language": "zh",
+      "language": "en-US",
       "uuid": [
         "{{request.args.get('uuid')}}"
       ]

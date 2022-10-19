@@ -1,7 +1,9 @@
 [
   {
     "action": "talk",
-    "text": "Welcome, please read the validation code showed in screen"
+    "language": "cmn-CN",
+    "style": 1,
+    "text": "您好，欢迎致电语音认证系统，请读出屏幕上显示的认证码"
   },
   {
     "action": "input",
@@ -9,11 +11,11 @@
       "speech"
     ],
     "eventUrl": [
-      "{{request.host_url}}mock-api/vonage-asr"
+      "{{request.host_url}}mock-api/vonage-asr-zh"
     ],
     "speech": {
       "endOnSilence": 1,
-      "language": "en-US",
+      "language": "zh",
       "uuid": [
         "{{request.args.get('uuid')}}"
       ]

@@ -1,0 +1,24 @@
+[
+  {
+    "action": "talk",
+    "language": "cmn-CN",
+    "style": 1,
+    "text": "您好，您读的认证码是：{{request.get_json()['speech']['results'][0]['text']}}，请再读一遍"
+  },
+  {
+    "action": "input",
+    "type": [
+      "speech"
+    ],
+    "eventUrl": [
+      "{{request.host_url}}mock-api/vonage-asr-2-zh"
+    ],
+    "speech": {
+      "endOnSilence": 1,
+      "language": "zh",
+      "uuid": [
+        "{{request.args.get('uuid')}}"
+      ]
+    }
+  }
+]
