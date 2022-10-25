@@ -2,7 +2,6 @@ import logging
 import random
 
 from flask import Flask, jsonify, make_response, render_template, request
-from flask_cors import cross_origin
 from jinja2.exceptions import TemplateNotFound
 
 logging.basicConfig(level=logging.DEBUG)
@@ -11,7 +10,6 @@ event_logger = logging.getLogger('event')
 logging.getLogger('werkzeug').setLevel(logging.WARNING)
 
 app = Flask(__name__)
-# the verifyResult can be ["waiting", "pass", "failed"]
 global_vars = {
     "verifyResult": "waiting",
     "verifyCode": ""
@@ -56,7 +54,6 @@ def asr():
 
 
 @app.route('/vonage/login', methods=['POST'])
-@cross_origin()
 def login():
     json = request.json
     msisdn = json['msisdn']
@@ -70,7 +67,6 @@ def login():
 
 
 @app.route('/vonage/queryCode', methods=['GET'])
-@cross_origin()
 def query_code():
     return jsonify({"code": global_vars["verifyCode"]})
 
@@ -88,14 +84,12 @@ def generate_code():
 
 
 @app.route('/vonage/refreshCode', methods=['POST'])
-@cross_origin()
 def refresh_code():
     code = generate_code()
     return jsonify({"code": code})
 
 
 @app.route('/vonage/verifyResult', methods=['POST'])
-@cross_origin()
 def verify_result():
     return jsonify({"status": global_vars['verifyResult']})
 
