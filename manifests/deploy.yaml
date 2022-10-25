@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vonage-demo
+  namespace: demo
+spec:
+  selector:
+    matchLabels:
+      app: vonage-demo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: vonage-demo
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: main
+        image: jianshao/vonage-demo:0.0.1
+        ports:
+        - containerPort: 5000
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 10m
+            memory: 100Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vonage-demo
+  labels:
+    app: vonage-demo
+  namespace: demo
+spec:
+  ports:
+  - name: http
+    port: 5000
+  selector:
+    app: vonage-demo
