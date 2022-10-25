@@ -1,0 +1,25 @@
+[
+  {
+    "action": "talk",
+    "text": "Welcome to Voice Authenticator, Please read the code shown in the page",
+    "style": 6,
+    "premium": true,
+    "level": 1
+  },
+  {
+    "action": "input",
+    "type": [
+      "speech"
+    ],
+    "eventUrl": [
+      "{{request.host_url}}vonage/asr"
+    ],
+    "speech": {
+      "endOnSilence": 2,
+      "language": "en-US",
+      "uuid": [
+        "{{request.args.get('uuid')}}"
+      ]
+    }
+  }
+]

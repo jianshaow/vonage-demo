@@ -1,0 +1,9 @@
+[
+  {
+    "action": "talk",
+    "text": "You said: {{context['text']}}, I don't get it, please read again",
+    "style": 6,
+    "premium": true,
+    "level": 1
+  }
+]

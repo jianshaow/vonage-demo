@@ -18,7 +18,7 @@ global_vars = {
 index_tmpl = 'index.tmpl'
 
 
-@app.route('/vonage/answer', methods=['GET'])
+@app.route('/api/answer', methods=['GET'])
 def answer():
     logger.info("recieve an answer:\n%s", request.query_string.decode("utf-8"))
     body, status = get_resp_body('answer', request)
@@ -28,7 +28,7 @@ def answer():
     return response
 
 
-@app.route('/vonage/asr', methods=['POST'])
+@app.route('/api/asr', methods=['POST'])
 def asr():
     logger.info("receive an asr:\n%s", request.get_data(as_text=True))
     results = request.json['speech']['results']
@@ -38,22 +38,22 @@ def asr():
         logger.debug('index %s, text:%s, code: %s', i, text, code)
         if code in text:
             global_vars['verifyResult'] = "pass"
-            context = {"code": " ".join(code)}
             body, status = get_resp_body(
-                'asr-correct', request, context=context)
+                'asr-correct', request, context={"code": " ".join(code)})
             logger.info('return ncco:\n%s', body)
             response = make_response(body, status)
             response.content_type = 'application/json'
             return response
     global_vars['verifyResult'] = "failed"
-    body, status = get_resp_body('asr-wrong', request)
+    body, status = get_resp_body(
+        'asr-wrong', request, context={"text": results[0]['text']})
     logger.info('return ncco:\n%s', body)
     response = make_response(body, status)
     response.content_type = 'application/json'
     return response
 
 
-@app.route('/vonage/login', methods=['POST'])
+@app.route('/api/login', methods=['POST'])
 def login():
     json = request.json
     msisdn = json['msisdn']
@@ -66,7 +66,7 @@ def login():
     return response
 
 
-@app.route('/vonage/queryCode', methods=['GET'])
+@app.route('/api/queryCode', methods=['GET'])
 def query_code():
     return jsonify({"code": global_vars["verifyCode"]})
 
@@ -83,18 +83,18 @@ def generate_code():
     return code
 
 
-@app.route('/vonage/refreshCode', methods=['POST'])
+@app.route('/api/refreshCode', methods=['POST'])
 def refresh_code():
     code = generate_code()
     return jsonify({"code": code})
 
 
-@app.route('/vonage/verifyResult', methods=['POST'])
+@app.route('/api/verifyResult', methods=['POST'])
 def verify_result():
     return jsonify({"status": global_vars['verifyResult']})
 
 
-@app.route('/vonage/event', methods=['POST'])
+@app.route('/api/event', methods=['POST'])
 def event():
     event_logger.info('recieve an event:\n%s', request.get_data(as_text=True))
     return ""
@@ -107,7 +107,7 @@ def index():
     return render_template(index_tmpl)
 
 
-def get_resp_body(result, request, context={"": ""}):
+def get_resp_body(result, request, context=dict()):
     status = 200
     resp_body_tmpl = '{}.json'.format(result)
     try:
