@@ -12,7 +12,7 @@
       "speech"
     ],
     "eventUrl": [
-      "{{request.host_url}}vonage/asr"
+      "{{request.host_url}}api/asr"
     ],
     "speech": {
       "endOnSilence": 2,
