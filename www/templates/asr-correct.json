@@ -1,7 +1,7 @@
 [
   {
     "action": "talk",
-    "text": "You said: {{context['code']}}, correct, goodbye",
+    "text": "You said: {{context.code}}, correct, goodbye",
     "style": 6,
     "premium": true,
     "level": 1

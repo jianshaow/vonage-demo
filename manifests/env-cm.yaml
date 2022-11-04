@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-cm
+  namespace: demo
+data:
+  SCHEME: https

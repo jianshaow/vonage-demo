@@ -12,7 +12,7 @@
       "speech"
     ],
     "eventUrl": [
-      "{{request.host_url}}api/asr"
+      "{{context.scheme}}://{{context.host}}/api/asr"
     ],
     "speech": {
       "endOnSilence": 2,

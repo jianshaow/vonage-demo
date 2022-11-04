@@ -1,5 +1,6 @@
 import logging
 import random
+import os
 
 from flask import Flask, jsonify, make_response, render_template, request
 from jinja2.exceptions import TemplateNotFound
@@ -108,6 +109,9 @@ def index():
 
 
 def get_resp_body(result, request, context=dict()):
+    context['host'] = os.getenv('HOST', request.host)
+    context['scheme'] = os.getenv('SCHEME', request.scheme)
+
     status = 200
     resp_body_tmpl = '{}.json'.format(result)
     try:
