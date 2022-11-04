@@ -25,11 +25,11 @@ docker stop vonage-demo
 ## test wiht curl
 ~~~ shell
 curl http://127.0.0.1:5000/api/answer?uuid=1234
-curl http://127.0.0.1:5000/api/asr -H 'Content-Type: application/json' -d '{"speech":{"results":[{"text":"1234"}]}}'
+asr_url=$(curl -s http://127.0.0.1:5000/api/answer?uuid=1234|jq -r '.[1].eventUrl[0]')
+curl $asr_url -H 'Content-Type: application/json' -d '{"speech":{"results":[{"text":"1234"}]}}'
 ~~~
 
 ## deploy on k8s
 ~~~ shell
 kubectl apply -f manifests/deploy.yaml
-kubectl apply -f manifests/ingress.yaml
 ~~~
