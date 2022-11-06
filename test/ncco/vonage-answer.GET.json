@@ -9,7 +9,7 @@
       "speech"
     ],
     "eventUrl": [
-      "{{request.host_url}}mock-api/vonage-asr"
+      "{{context.external_scheme}}://{{context.external_host}}/mock-api/vonage-asr"
     ],
     "speech": {
       "endOnSilence": 1,

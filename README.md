@@ -15,7 +15,7 @@ python www/app.py
 
 ## run on docker
 ~~~ shell
-export image_ver=0.0.2
+export image_ver=0.0.3
 docker build -t jianshao/vonage-demo:$image_ver .
 docker push jianshao/vonage-demo:$image_ver
 docker run -d --name vonage-demo --rm -p 5000:5000 jianshao/vonage-demo:$image_ver

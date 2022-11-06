@@ -16,7 +16,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: main
-        image: jianshao/vonage-demo:0.0.2
+        image: jianshao/vonage-demo:0.0.3
         envFrom:
         - configMapRef:
             name: env-cm

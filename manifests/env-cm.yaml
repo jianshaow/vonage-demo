@@ -4,4 +4,4 @@ metadata:
   name: env-cm
   namespace: demo
 data:
-  SCHEME: https
+  EXTERNAL_SCHEME: https

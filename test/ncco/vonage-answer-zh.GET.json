@@ -11,7 +11,7 @@
       "speech"
     ],
     "eventUrl": [
-      "{{request.host_url}}mock-api/vonage-asr-zh"
+      "{{context.external_scheme}}://{{context.external_host}}/mock-api/vonage-asr-zh"
     ],
     "speech": {
       "endOnSilence": 1,
